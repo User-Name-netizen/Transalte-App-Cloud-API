@@ -1,16 +1,11 @@
 {
   "version": 2,
-  "name": "google-translate-app",
-  "builds": [
-    {
-      "src": "src/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
+  "name": "transalte-app-cloud-api",
+  "functions": {
+    "src/server.js": {
+      "maxDuration": 30
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -27,10 +22,5 @@
   ],
   "env": {
     "GOOGLE_CLOUD_API_KEY": "@google_cloud_api_key"
-  },
-  "functions": {
-    "src/server.js": {
-      "maxDuration": 30
-    }
   }
 }
