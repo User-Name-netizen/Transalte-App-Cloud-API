@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Translate App - Multi-language Text Translation</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-language"></i> Google Translate App</h1>
+        <p>Multi-language text translation with Google Cloud Translation API</p>
+      </header>
+
+      <main class="app">
+        <div class="language-selector">
+          <div class="language-group">
+            <label for="fromLanguage">From language:</label>
+            <select id="fromLanguage" class="language-select">
+              <option value="auto">Auto-detect</option>
+            </select>
+          </div>
+
+          <button id="swapLanguages" class="swap-btn" title="Swap languages">
+            <i class="fas fa-exchange-alt"></i>
+          </button>
+
+          <div class="language-group">
+            <label for="toLanguage">To language:</label>
+            <select id="toLanguage" class="language-select"></select>
+          </div>
+        </div>
+
+        <div class="translation-area">
+          <div class="input-section">
+            <div class="text-header">
+              <span class="section-title">Source Text</span>
+              <span id="inputCharCount" class="char-count">0 characters</span>
+            </div>
+            <textarea
+              id="inputText"
+              placeholder="Enter text to translate..."
+              maxlength="5000"
+              class="text-input"
+            ></textarea>
+            <div class="input-controls">
+              <button id="detectLanguage" class="control-btn">
+                <i class="fas fa-search"></i> Detect Language
+              </button>
+              <button id="clearInput" class="control-btn">
+                <i class="fas fa-times"></i> Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="output-section">
+            <div class="text-header">
+              <span class="section-title">Translation</span>
+              <span id="outputCharCount" class="char-count">0 characters</span>
+            </div>
+            <textarea
+              id="outputText"
+              placeholder="Translation will appear here..."
+              readonly
+              class="text-output"
+            ></textarea>
+            <div class="output-controls">
+              <button id="copyOutput" class="control-btn">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+              <button id="speakOutput" class="control-btn">
+                <i class="fas fa-volume-up"></i> Speak
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="translateBtn" class="translate-btn">
+            <i class="fas fa-language"></i> Translate Text
+          </button>
+        </div>
+
+        <div class="status-section">
+          <div id="status" class="status-message"></div>
+          <div id="translationInfo" class="translation-info"></div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p>
+            <i class="fas fa-info-circle"></i>
+            Using Google Cloud Translation API -
+            <span id="apiStatus" class="api-status">Checking...</span>
+          </p>
+          <div class="footer-links">
+            <button
+              id="themeToggle"
+              class="theme-toggle"
+              title="Toggle Dark Mode"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+            <button id="historyBtn" class="control-btn">
+              <i class="fas fa-history"></i> History
+            </button>
+            <button id="voiceBtn" class="control-btn">
+              <i class="fas fa-microphone"></i> Voice
+            </button>
+            <a href="#" id="aboutBtn">About</a>
+            <a href="#" id="helpBtn">Help</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay hidden">
+      <div class="loading-spinner">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Translating...</p>
+      </div>
+    </div>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div id="modalBody" class="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
