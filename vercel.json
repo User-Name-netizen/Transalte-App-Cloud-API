@@ -1,11 +1,16 @@
 {
   "version": 2,
   "name": "transalte-app-cloud-api",
-  "functions": {
-    "src/server.js": {
-      "maxDuration": 30
+  "builds": [
+    {
+      "src": "src/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -14,10 +19,6 @@
     {
       "src": "/(.*)",
       "dest": "public/$1"
-    },
-    {
-      "src": "/",
-      "dest": "src/server.js"
     }
   ]
 }
