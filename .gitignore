@@ -88,8 +88,10 @@ Thumbs.db
 
 # Service Account Keys
 service-account-key.json
-*.json
 
 # Build outputs
 dist/
 build/
+
+# Vercel
+.vercel
